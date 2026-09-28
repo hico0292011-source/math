@@ -1,3 +1,6 @@
+import os
+import threading
+from http.server import HTTPServer, BaseHTTPRequestHandler
 import io
 import re
 import math
@@ -548,7 +551,22 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     except Exception as e:
         await update.message.reply_text(f"❌ **Xatolik:** `{str(e)}`", parse_mode="Markdown")
+# ==============================================================================
+# RENDER DUMMY PORT BINDING (RENDER XATOSINI YO'QOTISH UCHUN)
+# ==============================================================================
+class HealthCheckHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"Bot muvaffaqiyatli ishlamoqda!")
 
+def run_health_check_server():
+    port = int(os.environ.get("PORT", 8080))
+    server = HTTPServer(("0.0.0.0", port), HealthCheckHandler)
+    server.serve_forever()
+
+# Serverni alohida fonda ishga tushirish
+threading.Thread(target=run_health_check_server, daemon=True).start()
 # ==============================================================================
 # MAIN EXECUTION (FOR RENDER DEPLOYMENT & LOCAL EXECUTION)
 # ==============================================================================
