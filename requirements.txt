@@ -1,7 +1,4 @@
-aiogram
-sympy
+pyTelegramBotAPI
+google-generativeai
+pillow
 matplotlib
-numpy
-pytz
-apscheduler
-aiohttp
