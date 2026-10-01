@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>PUBG Battle Royale Mini App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hud-container">
+        <!-- TOP HUD -->
+        <div class="top-bar">
+            <span>📍 COMPASS: NW 315°</span>
+            <span class="zone">☣️ ZONE: 00:45</span>
+            <span class="alive">👥 ALIVE: <strong id="alive-count">98</strong>/100</span>
+            <span class="kills">☠️ KILLS: <strong id="kills-count">0</strong></span>
+        </div>
+
+        <!-- GAME SCREEN / STORY -->
+        <div class="game-card">
+            <div class="card-header">⚠️ ZONA VIZUAL TAHLILI</div>
+            <div class="story-box" id="story-text">
+                Siz Pochinki zonasiga parashyutda tushdingiz. Bino ichida dushman qadam tovushlari eshitilmoqda...
+            </div>
+        </div>
+
+        <!-- STATS PANEL -->
+        <div class="stats-panel">
+            <div class="stat-row">
+                <label>HEALTH (HP):</label>
+                <div class="bar-bg"><div class="bar-fill hp-bar" id="hp-bar" style="width: 100%;"></div></div>
+                <span id="hp-val">100/100</span>
+            </div>
+            <div class="stat-row">
+                <label>ARMOR (VEST):</label>
+                <div class="bar-bg"><div class="bar-fill armor-bar" id="armor-bar" style="width: 75%;"></div></div>
+                <span id="armor-val">75/100</span>
+            </div>
+            <div class="info-row">
+                <div>🔫 QUROL: <span id="weapon-val" class="highlight">M416 (30/90)</span></div>
+                <div>🎒 ANJOMLAR: <span id="inv-val">Medkit x2, Granata x1</span></div>
+            </div>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="actions-container" id="choices-box">
+            <button class="action-btn" onclick="makeAction(0)">🏠 Bino ichiga kirib loot qilish</button>
+            <button class="action-btn" onclick="makeAction(1)">🚗 Atrofda mashina izlash</button>
+            <button class="action-btn" onclick="makeAction(2)">🎯 Tomga chiqib atroflarni kuzatish</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
