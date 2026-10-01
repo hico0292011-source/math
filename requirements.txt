@@ -1,4 +1,4 @@
-pyTelegramBotAPI
+aiogram==3.15.0
+Pillow
 google-generativeai
-pillow
-matplotlib
+aiohttp
